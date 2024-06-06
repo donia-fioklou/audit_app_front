@@ -1,0 +1,31 @@
+of PDF document)
+     * @param fillStyle A string specifying the painting style or null. Valid styles include: 'S' [default] - stroke, 'F' - fill, and 'DF' (or 'FD') - fill then stroke.
+     */
+    DocHandler.prototype.rect = function (x, y, width, height, fillStyle) {
+        // null is excluded from fillStyle possible values because it isn't needed
+        // and is prone to bugs as it's used to postpone setting the style
+        // https://rawgit.com/MrRio/jsPDF/master/docs/jsPDF.html#rect
+        return this.jsPDFDocument.rect(x, y, width, height, fillStyle);
+    };
+    DocHandler.prototype.getLastAutoTable = function () {
+        return this.jsPDFDocument.lastAutoTable || null;
+    };
+    DocHandler.prototype.getTextWidth = function (text) {
+        return this.jsPDFDocument.getTextWidth(text);
+    };
+    DocHandler.prototype.getDocument = function () {
+        return this.jsPDFDocument;
+    };
+    DocHandler.prototype.setPage = function (page) {
+        this.jsPDFDocument.setPage(page);
+    };
+    DocHandler.prototype.addPage = function () {
+        return this.jsPDFDocument.addPage();
+    };
+    DocHandler.prototype.getFontList = function () {
+        return this.jsPDFDocument.getFontList();
+    };
+    DocHandler.prototype.getGlobalOptions = function () {
+        return globalDefaults || {};
+    };
+  
